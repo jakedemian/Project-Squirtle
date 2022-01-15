@@ -5,6 +5,10 @@ public class PlayerController : MonoBehaviour {
     public float vertMoveSpeed;
 
     private void Update() {
+        DoMove();
+    }
+
+    private void DoMove() {
         var hInput = Input.GetAxisRaw("Horizontal");
         var vInput = Input.GetAxisRaw("Vertical");
 
