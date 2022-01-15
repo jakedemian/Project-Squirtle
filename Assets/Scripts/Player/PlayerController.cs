@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
             var x = horizComponent;
             var y = vertComponent;
 
-            var theta = Mathf.Atan(y / x);
+            var theta = Mathf.Atan2(y, x);
             var sinTheta = Mathf.Sin(theta);
             var cosTheta = Mathf.Cos(theta);
 
@@ -40,10 +40,7 @@ public class PlayerController : MonoBehaviour {
 
             var r = a * b / Mathf.Sqrt(sinComponent + cosComponent);
 
-            // TODO seems scuffed, there's probly a math reason why the directions are reversed while moving left. look into this
-            var reverseFlag = horizComponent < 0f ? -1f : 1f;
-
-            translation = new Vector2(Mathf.Cos(theta) * r * reverseFlag, Mathf.Sin(theta) * r * reverseFlag);
+            translation = new Vector2(Mathf.Cos(theta) * r, Mathf.Sin(theta) * r);
         }
 
         transform.Translate(translation * Time.deltaTime);
